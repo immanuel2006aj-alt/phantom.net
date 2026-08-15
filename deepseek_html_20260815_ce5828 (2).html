@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>PHANTOM · Earn Passive Income</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ---------- RESET & VARIABLES ---------- */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --bg-primary: #080B14;
+      --bg-secondary: #0F1629;
+      --bg-card: #141C33;
+      --bg-elevated: #1C2647;
+      --border-subtle: #2A3560;
+      --text-primary: #EEF2FF;
+      --text-secondary: #B8C4E0;
+      --text-muted: #7A88A8;
+      --accent-1: #7C5CFC;
+      --accent-2: #2DD4BF;
+      --accent-3: #FBBF24;
+      --success: #34D399;
+      --danger: #F87171;
+      --radius: 20px;
+      --shadow: 0 20px 60px rgba(0,0,0,0.7);
+      --glass-bg: rgba(20,28,51,0.6);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bottom-nav-height: 72px;
+    }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent-1); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent-2); }
+    .container { max-width: 1280px; margin: 0 auto; padding: 1rem 1.5rem; width: 100%; }
+    .flex { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .text-center { text-align: center; }
+    .text-muted { color: var(--text-muted); }
+    .text-accent { color: var(--accent-1); }
+    .mt-1 { margin-top: 1rem; }
+    .mt-2 { margin-top: 2rem; }
+    .mb-1 { margin-bottom: 1rem; }
+    .w-full { width: 100%; }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      backdrop-filter: blur(4px);
+    }
+    .card:hover { border-color: var(--accent-1); transform: translateY(-4px); box-shadow: 0 24px 70px rgba(124,92,252,0.15); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.8rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      min-height: 50px;
+      min-width: 50px;
+      font-family: var(--font);
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-1), #6B4CE0); color: #fff; box-shadow: 0 8px 24px rgba(124,92,252,0.35); }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 32px rgba(124,92,252,0.5); }
+    .btn-secondary { background: linear-gradient(135deg, var(--accent-2), #20B8A0); color: #080B14; }
+    .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(45,212,191,0.4); }
+    .btn-outline { background: transparent; border: 1px solid var(--border-subtle); color: var(--text-primary); }
+    .btn-outline:hover { background: var(--bg-elevated); border-color: var(--accent-1); transform: translateY(-2px); }
+    .btn-success { background: linear-gradient(135deg, var(--success), #2BBF8A); color: #080B14; }
+    .btn-success:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(52,211,153,0.4); }
+    .btn-danger { background: linear-gradient(135deg, var(--danger), #E06060); color: #fff; }
+    .btn-danger:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(248,113,113,0.4); }
+    .btn-sm { padding: 0.4rem 1.2rem; font-size: 0.8rem; min-height: 36px; }
+    input, select, textarea {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      padding: 0.9rem 1.2rem;
+      border-radius: 14px;
+      width: 100%;
+      font-size: 1rem;
+      font-family: var(--font);
+      transition: all 0.3s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent-1);
+      box-shadow: 0 0 0 4px rgba(124,92,252,0.15);
+    }
+    label { font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 0.4rem; font-size: 0.95rem; }
+    .status-dot {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      margin-right: 0.6rem;
+      flex-shrink: 0;
+      animation: pulse-dot 1.8s infinite;
+    }
+    .status-active { background: var(--success); box-shadow: 0 0 20px var(--success); }
+    .status-paused { background: var(--accent-3); box-shadow: 0 0 20px var(--accent-3); }
+    .status-offline { background: var(--text-muted); box-shadow: none; animation: none; }
+    @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.85); } }
+    .timer {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 4px;
+      background: var(--border-subtle);
+      outline: none;
+      padding: 0;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      cursor: pointer;
+      border: 2px solid var(--bg-primary);
+      box-shadow: 0 0 20px rgba(124,92,252,0.4);
+      transition: transform 0.2s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    input[type="range"]::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      cursor: pointer;
+      border: 2px solid var(--bg-primary);
+    }
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+      border: 2px solid var(--border-subtle);
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+    .toast {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      z-index: 9999;
+      max-width: 90%;
+      text-align: center;
+      display: none;
+      backdrop-filter: blur(12px);
+      font-weight: 500;
+      color: var(--text-primary);
+      border-left: 4px solid var(--accent-1);
+      animation: slideUp 0.4s ease;
+    }
+    @keyframes slideUp { from { opacity:0; transform: translateX(-50%) translateY(20px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }
+    .sidebar {
+      display: none;
+      flex-direction: column;
+      width: 260px;
+      background: var(--bg-card);
+      border-right: 1px solid var(--border-subtle);
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 1.8rem 0;
+      z-index: 1000;
+      overflow-y: auto;
+      backdrop-filter: blur(8px);
+    }
+    .sidebar .brand {
+      padding: 0 1.8rem 2rem;
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.8rem;
+      color: var(--text-secondary);
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .sidebar a i { width: 1.8rem; text-align: center; font-size: 1.2rem; }
+    .sidebar a:hover { background: var(--bg-elevated); color: var(--text-primary); }
+    .sidebar a.active { color: var(--text-primary); border-left-color: var(--accent-1); background: var(--bg-elevated); }
+    .sidebar .spacer { flex: 1; }
+    .sidebar .logout-btn { border-top: 1px solid var(--border-subtle); margin-top: 0.5rem; padding-top: 1rem; }
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-subtle);
+      padding: 0.4rem 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--bottom-nav-height);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .bottom-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      padding: 0.2rem 0.5rem;
+      min-width: 44px;
+      transition: color 0.2s;
+    }
+    .bottom-nav a i { font-size: 1.4rem; margin-bottom: 0.1rem; }
+    .bottom-nav a.active { color: var(--accent-1); }
+    .main-content { flex: 1; padding-bottom: calc(var(--bottom-nav-height) + 1.5rem); }
+    .page { display: none; animation: fadeIn 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .page.active { display: block; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: translateY(0); } }
+    @media (max-width: 480px) {
+      .container { padding: 0.8rem; }
+      .timer { font-size: 2.2rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .btn { padding: 0.5rem 1.2rem; font-size: 0.85rem; min-height: 40px; }
+      .card { padding: 1.2rem; }
+    }
+    @media (min-width: 768px) {
+      .bottom-nav { display: none; }
+      .sidebar { display: flex; }
+      .main-content { margin-left: 260px; padding-bottom: 0; }
+      .container { padding: 1.5rem 2.5rem; }
+    }
+    @media (min-width: 1920px) {
+      html { font-size: 18px; }
+      .container { max-width: 1600px; padding: 2rem 3rem; }
+      .sidebar { width: 280px; }
+      .main-content { margin-left: 280px; }
+      .timer { font-size: 4rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.2rem;
+    }
+    .admin-stat { background: var(--bg-elevated); padding: 1.2rem; border-radius: var(--radius); text-align: center; }
+    .admin-stat .value { font-size: 2.2rem; font-weight: 700; color: var(--accent-2); }
+    .legal-content { max-width: 800px; margin: 0 auto; }
+    .legal-content h2 { margin-top: 2rem; color: var(--text-primary); }
+    .legal-content p { color: var(--text-secondary); margin: 0.5rem 0; }
+    .ticket-status.open { color: var(--accent-3); }
+    .ticket-status.resolved { color: var(--success); }
+    .notification-badge {
+      background: var(--danger);
+      color: #fff;
+      border-radius: 50%;
+      padding: 0.05rem 0.5rem;
+      font-size: 0.7rem;
+      margin-left: 0.2rem;
+      vertical-align: top;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-weight: 500;
+    }
+    input[type="checkbox"] { width: auto; margin-right: 0.2rem; accent-color: var(--accent-1); transform: scale(1.2); }
+    .footer {
+      margin-top: 4rem;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .footer a { color: var(--text-secondary); margin: 0 0.8rem; }
+    .footer a:hover { color: var(--accent-1); }
+    .hero-gradient {
+      background: radial-gradient(ellipse at top left, rgba(124,92,252,0.25), transparent 60%),
+                  radial-gradient(ellipse at bottom right, rgba(45,212,191,0.15), transparent 60%);
+      border-radius: var(--radius);
+      padding: 4rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(124,92,252,0.2);
+    }
+    .hero-gradient .badge {
+      display: inline-block;
+      background: rgba(251,191,36,0.15);
+      border: 1px solid var(--accent-3);
+      color: var(--accent-3);
+      padding: 0.3rem 1.4rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      backdrop-filter: blur(4px);
+      letter-spacing: 0.5px;
+      animation: glow-pulse 2.5s infinite;
+    }
+    @keyframes glow-pulse { 0%,100% { box-shadow: 0 0 10px rgba(251,191,36,0.2); } 50% { box-shadow: 0 0 30px rgba(251,191,36,0.5); } }
+    .hero-gradient h1 {
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-gradient .sub-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 0.5rem;
+    }
+    .hero-gradient .sub-title i { color: var(--accent-3); margin-right: 0.6rem; }
+    .hero-gradient p { font-size: 1.2rem; color: var(--text-secondary); max-width: 680px; margin: 0.8rem auto 2rem; }
+    @media (max-width: 480px) {
+      .hero-gradient { padding: 2rem 1rem; }
+      .hero-gradient .sub-title { font-size: 1.2rem; }
+    }
+    .glow-text { text-shadow: 0 0 40px rgba(124,92,252,0.3); }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR (desktop) -->
+<nav class="sidebar" id="sidebar">
+  <div class="brand">PHANTOM</div>
+  <a href="#" data-page="dashboard" class="active"><i class="fas fa-home"></i> Dashboard</a>
+  <a href="#" data-page="rewards"><i class="fas fa-trophy"></i> Rewards</a>
+  <a href="#" data-page="wallet"><i class="fas fa-wallet"></i> Wallet</a>
+  <a href="#" data-page="referrals"><i class="fas fa-link"></i> Referrals</a>
+  <a href="#" data-page="support"><i class="fas fa-headset"></i> Support</a>
+  <a href="#" data-page="profile"><i class="fas fa-user"></i> Profile</a>
+  <a href="#" data-page="admin" id="adminLink" style="display:none;"><i class="fas fa-cogs"></i> Admin</a>
+  <div class="spacer"></div>
+  <a href="#" id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</nav>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav" id="bottomNav">
+  <a href="#" data-page="dashboard" class="active"><i class="fas fa-home"></i> Home</a>
+  <a href="#" data-page="rewards"><i class="fas fa-trophy"></i> Rewards</a>
+  <a href="#" data-page="wallet"><i class="fas fa-wallet"></i> Wallet</a>
+  <a href="#" data-page="referrals"><i class="fas fa-link"></i> Refer</a>
+  <a href="#" data-page="profile"><i class="fas fa-user"></i> Profile</a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="main-content" id="mainContent">
+
+  <!-- LANDING PAGE -->
+  <div id="page-landing" class="page active">
+    <div class="container text-center" style="padding-top:2rem;">
+      <div class="hero-gradient">
+        <div class="badge"><i class="fas fa-bolt"></i> LIVE · EARN NOW</div>
+        <h1>Earn with PHANTOM</h1>
+        <div class="sub-title"><i class="fas fa-coins"></i> Up to $2 a Day – No Investment, Pure Passive</div>
+        <p>Join thousands of users earning real income by simply keeping this page open. No mining, no battery drain.</p>
+        <div class="flex" style="justify-content:center; margin-top:1.5rem;">
+          <a href="#" id="getStartedBtn" class="btn btn-primary"><i class="fas fa-rocket"></i> Start Earning Now</a>
+          <a href="#" id="howItWorksBtn" class="btn btn-outline"><i class="fas fa-info-circle"></i> How It Works</a>
+        </div>
+      </div>
+      <div style="margin-top:4rem; text-align:left; max-width:860px; margin-left:auto; margin-right:auto;">
+        <div class="grid-2">
+          <div class="card">
+            <i class="fas fa-microchip" style="font-size:2.8rem; color:var(--accent-1);"></i>
+            <h3>Zero Investment</h3>
+            <p class="text-muted">No deposits, no purchases. Just your device and internet.</p>
+          </div>
+          <div class="card">
+            <i class="fas fa-dollar-sign" style="font-size:2.8rem; color:var(--accent-3);"></i>
+            <h3>Up to $2 Daily</h3>
+            <p class="text-muted">Earn real USDT rewards based on your activity and referrals.</p>
+          </div>
+          <div class="card">
+            <i class="fas fa-shield-alt" style="font-size:2.8rem; color:var(--accent-2);"></i>
+            <h3>100% Transparent</h3>
+            <p class="text-muted">Live dashboard, clear rewards policy, full resource controls.</p>
+          </div>
+          <div class="card">
+            <i class="fas fa-users" style="font-size:2.8rem; color:var(--accent-1);"></i>
+            <h3>Referral Bonuses</h3>
+            <p class="text-muted">Earn 5% from your friends' rewards. Build your network.</p>
+          </div>
+        </div>
+        <div style="margin-top:3rem;">
+          <h2><i class="fas fa-question-circle text-muted"></i> FAQ</h2>
+          <div class="grid-2">
+            <div><strong>Is this a scam?</strong><p class="text-muted">No. We are a legitimate research participation network.</p></div>
+            <div><strong>How do I withdraw?</strong><p class="text-muted">Via USDT (min. $2.50) – processed within 1‑7 business days.</p></div>
+            <div><strong>Does it drain battery?</strong><p class="text-muted">You control the CPU slider. Uses <5% CPU.</p></div>
+            <div><strong>Is my data safe?</strong><p class="text-muted">No biometrics, no keystrokes, no camera.</p></div>
+          </div>
+        </div>
+        <div style="margin-top:3rem; text-align:center;">
+          <h2>Ready to start earning up to $2/day?</h2>
+          <a href="#" id="finalCtaBtn" class="btn btn-primary mt-1"><i class="fas fa-play"></i> Join Now — Free</a>
+          <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted);">
+            By participating, you agree to our <a href="#" data-page="terms">Terms</a> and <a href="#" data-page="privacy">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer container">
+      <p>
+        <a href="#" data-page="terms">Terms</a> ·
+        <a href="#" data-page="privacy">Privacy</a> ·
+        <a href="#" data-page="rewards-policy">Rewards Policy</a> ·
+        <a href="#" data-page="acceptable-use">Acceptable Use</a> ·
+        <a href="#" data-page="risk-disclosure">Risk Disclosure</a>
+      </p>
+      <p style="margin-top:0.5rem;">© 2026 PHANTOM · AETHERPULSE. All rights reserved.</p>
+    </div>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="page-login" class="page">
+    <div class="container" style="max-width:440px; margin-top:3rem;">
+      <div class="card">
+        <h2 style="text-align:center;"><i class="fas fa-sign-in-alt text-accent"></i> Welcome Back</h2>
+        <form id="loginForm">
+          <label>Email</label>
+          <input type="email" id="loginEmail" placeholder="you@example.com" required>
+          <label>Password</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" required>
+          <button type="submit" class="btn btn-primary w-full" style="margin-top:1.5rem;"><i class="fas fa-arrow-right"></i> Log In</button>
+        </form>
+        <p class="text-muted mt-1" style="text-align:center;">
+          <a href="#" data-page="register">Create account</a> ·
+          <a href="#" data-page="forgot-password">Forgot password?</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTER -->
+  <div id="page-register" class="page">
+    <div class="container" style="max-width:440px; margin-top:3rem;">
+      <div class="card">
+        <h2 style="text-align:center;"><i class="fas fa-user-plus text-accent"></i> Create Account</h2>
+        <form id="registerForm">
+          <label>Full Name</label>
+          <input type="text" id="regName" placeholder="John Doe" required>
+          <label>Email</label>
+          <input type="email" id="regEmail" placeholder="you@example.com" required>
+          <label>Password</label>
+          <input type="password" id="regPassword" placeholder="Min 8 characters" required minlength="8">
+          <label>Confirm Password</label>
+          <input type="password" id="regConfirm" placeholder="Confirm" required>
+          <button type="submit" class="btn btn-primary w-full" style="margin-top:1.5rem;"><i class="fas fa-check"></i> Register</button>
+        </form>
+        <p class="text-muted mt-1" style="text-align:center;">Already have an account? <a href="#" data-page="login">Sign in</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERIFY (kept for completeness, but not used) -->
+  <div id="page-verify" class="page">
+    <div class="container text-center" style="max-width:500px; margin-top:3rem;">
+      <div class="card">
+        <h2><i class="fas fa-envelope text-accent"></i> Verify Your Email</h2>
+        <p>We've sent a verification link. Please click it to continue.</p>
+        <button class="btn btn-outline" onclick="showToast('Verification email resent.')"><i class="fas fa-redo"></i> Resend</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORGOT PASSWORD – now shows Telegram contact -->
+  <div id="page-forgot-password" class="page">
+    <div class="container" style="max-width:440px; margin-top:3rem;">
+      <div class="card text-center">
+        <h2><i class="fas fa-key text-accent"></i> Forgot Password?</h2>
+        <p>No worries! Contact our support team on Telegram and we'll help you reset it.</p>
+        <p style="margin:1.5rem 0; font-size:1.2rem;">
+          <i class="fab fa-telegram" style="color:var(--accent-2);"></i>
+          <strong><a href="https://t.me/phantom_support" target="_blank">@phantom_support</a></strong>
+        </p>
+        <a href="#" data-page="login" class="btn btn-primary w-full"><i class="fas fa-arrow-left"></i> Back to Login</a>
+      </div>
+    </div>
+  </div>
+  <div id="page-reset-password" class="page">
+    <div class="container" style="max-width:440px; margin-top:3rem;">
+      <div class="card">
+        <h2>Set New Password</h2>
+        <input type="password" placeholder="New password" id="newPass">
+        <button class="btn btn-primary w-full mt-1" onclick="showToast('Password updated.')"><i class="fas fa-save"></i> Update</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING (Consent) -->
+  <div id="page-onboarding" class="page">
+    <div class="container" style="max-width:640px; margin-top:2rem;">
+      <h2>Welcome to PHANTOM</h2>
+      <div class="card">
+        <h3><i class="fas fa-handshake text-accent"></i> Participation Consent</h3>
+        <p style="color:var(--text-secondary);">Please read carefully:</p>
+        <ul style="color:var(--text-secondary); margin:1rem 0; padding-left:1.5rem;">
+          <li>This browser session may use a tiny amount of CPU while active.</li>
+          <li>You can pause or stop at any time.</li>
+          <li>Rewards are calculated based on your contribution.</li>
+          <li>No personal data (biometrics, keystrokes, etc.) is collected.</li>
+        </ul>
+        <label class="checkbox-label">
+          <input type="checkbox" id="consentCheckbox"> I understand and consent.
+        </label>
+        <br>
+        <button id="consentAcceptBtn" class="btn btn-primary" style="margin-top:1.5rem;"><i class="fas fa-check"></i> Accept & Continue</button>
+        <button id="consentCancelBtn" class="btn btn-outline" style="margin-top:1rem;"><i class="fas fa-times"></i> Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="page-dashboard" class="page">
+    <div class="container">
+      <div class="flex-between">
+        <h2>Dashboard</h2>
+        <div class="flex header-avatar">
+          <span id="notificationBell" style="cursor:pointer; position:relative;">
+            <i class="fas fa-bell" style="font-size:1.6rem;"></i>
+            <span class="notification-badge" id="notifBadge" style="display:none;">0</span>
+          </span>
+          <span class="avatar" id="userAvatar">U</span>
+        </div>
+      </div>
+      <div class="card mt-1" style="border-left:4px solid var(--accent-1);">
+        <div class="flex" style="justify-content:space-between; flex-wrap:wrap;">
+          <div>
+            <span class="status-dot status-offline" id="statusDot"></span>
+            <span id="statusText" style="font-weight:600;">Offline</span>
+          </div>
+          <div class="flex" style="gap:0.6rem;">
+            <button class="btn btn-success" id="startBtn"><i class="fas fa-play"></i> Start</button>
+            <button class="btn btn-outline" id="pauseBtn"><i class="fas fa-pause"></i> Pause</button>
+            <button class="btn btn-danger" id="stopBtn"><i class="fas fa-stop"></i> Stop</button>
+          </div>
+        </div>
+        <div class="grid-2 mt-1">
+          <div><span class="text-muted">Session Duration</span><br><span class="timer" id="sessionTimer">00:00:00</span></div>
+          <div><span class="text-muted">Resource Utilization</span><br><span id="cpuUsage" style="font-size:1.8rem; font-weight:700;">0%</span></div>
+          <div><span class="text-muted">Contribution Rate</span><br><span id="contribRate" style="font-size:1.8rem; font-weight:700;">0</span> <span class="text-muted">units/h</span></div>
+          <div><span class="text-muted">Estimated Reward</span><br><span id="estReward" style="font-size:1.8rem; font-weight:700; color:var(--accent-3);">$0.00</span></div>
+          <div><span class="text-muted">Today's Reward</span><br><span id="todayReward" style="font-size:1.8rem; font-weight:700; color:var(--success);">$0.00</span></div>
+          <div><span class="text-muted">Total Reward</span><br><span id="totalReward" style="font-size:1.8rem; font-weight:700; color:var(--accent-1);">$0.00</span></div>
+          <div><span class="text-muted">Streak</span><br><span id="streakCount" style="font-size:1.8rem; font-weight:700;">0 days</span></div>
+          <div><span class="text-muted">Next Reward Event</span><br><span id="nextEvent" style="font-size:1.4rem;">—</span></div>
+        </div>
+        <hr style="border-color:var(--border-subtle); margin:1.5rem 0;">
+        <label>Compute Limit</label>
+        <input type="range" min="10" max="100" value="25" class="w-full" id="cpuSlider">
+        <span id="cpuLimitLabel" style="font-weight:600; color:var(--accent-2);">25%</span>
+        <div class="flex mt-1">
+          <label class="checkbox-label"><input type="checkbox" id="pauseLowBattery"> Pause on low battery</label>
+          <label class="checkbox-label"><input type="checkbox" id="pauseOverheat"> Pause on overheating</label>
+          <label class="checkbox-label"><input type="checkbox" id="pauseMobileData"> Pause on mobile data</label>
+        </div>
+        <p class="text-muted" style="font-size:0.85rem; margin-top:0.8rem;">
+          <i class="fas fa-info-circle"></i> Session runs while this tab is active. If you leave, contribution reduces but you still earn a small base rate.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REWARDS -->
+  <div id="page-rewards" class="page">
+    <div class="container">
+      <h2><i class="fas fa-trophy text-accent"></i> Rewards</h2>
+      <div class="card">
+        <div class="flex">
+          <button class="btn btn-outline btn-sm" data-filter="today">Today</button>
+          <button class="btn btn-outline btn-sm" data-filter="week">7 Days</button>
+          <button class="btn btn-outline btn-sm" data-filter="month">30 Days</button>
+          <button class="btn btn-outline btn-sm" data-filter="all">All Time</button>
+        </div>
+        <div class="grid-2 mt-1">
+          <div><span class="text-muted">Today</span><br><span id="rewardToday" style="font-size:1.8rem; font-weight:700; color:var(--success);">$0.00</span></div>
+          <div><span class="text-muted">This Week</span><br><span id="rewardWeek" style="font-size:1.8rem; font-weight:700;">$0.00</span></div>
+          <div><span class="text-muted">This Month</span><br><span id="rewardMonth" style="font-size:1.8rem; font-weight:700;">$0.00</span></div>
+          <div><span class="text-muted">Lifetime</span><br><span id="rewardLifetime" style="font-size:1.8rem; font-weight:700; color:var(--accent-1);">$0.00</span></div>
+        </div>
+        <h4 class="mt-1">History</h4>
+        <div id="rewardHistory"><p class="text-muted">No entries yet.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WALLET -->
+  <div id="page-wallet" class="page">
+    <div class="container">
+      <h2><i class="fas fa-wallet text-accent"></i> Wallet</h2>
+      <div class="card">
+        <div><span class="text-muted">Available Balance</span><br><span style="font-size:2.5rem; font-weight:700; color:var(--accent-3);" id="availBalance">$0.00</span></div>
+        <div><span class="text-muted">Pending Balance</span><br><span id="pendingBalance" style="font-size:1.4rem;">$0.00</span></div>
+        <div><span class="text-muted">Lifetime Withdrawn</span><br><span id="lifetimeWithdrawn" style="font-size:1.4rem;">$0.00</span></div>
+        <hr style="border-color:var(--border-subtle); margin:1.5rem 0;">
+        <label>Withdrawal Method</label>
+        <select id="withdrawMethod">
+          <option value="USDT">USDT (ERC20/BEP20)</option>
+          <option value="UPI">UPI (India)</option>
+          <option value="BANK">Bank Transfer</option>
+          <option value="WISE">Wise</option>
+          <option value="PAYPAL">PayPal</option>
+        </select>
+        <label>Address / UPI ID / Account Details</label>
+        <input type="text" id="withdrawAddress" placeholder="Enter your payment address">
+        <label>Amount (USD)</label>
+        <input type="number" id="withdrawAmount" placeholder="Minimum $2.50">
+        <button class="btn btn-primary" id="withdrawBtn"><i class="fas fa-paper-plane"></i> Request Withdrawal</button>
+        <p class="text-muted" style="font-size:0.85rem; margin-top:0.5rem;">Withdrawals are processed within 1‑7 business days. Min. $2.50 (≈₹200).</p>
+        <h4>Withdrawal History</h4>
+        <div id="withdrawHistory"><p class="text-muted">No withdrawals yet.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REFERRALS -->
+  <div id="page-referrals" class="page">
+    <div class="container">
+      <h2><i class="fas fa-link text-accent"></i> Referrals</h2>
+      <div class="card">
+        <p>Your referral code: <strong id="refCode" style="font-size:1.4rem; color:var(--accent-3);">ABCDEF</strong></p>
+        <p>Link: <span id="refLink" style="color:var(--accent-2);">https://phantom.io/ref/ABCDEF</span></p>
+        <div class="grid-2">
+          <div><span class="text-muted">Successful Referrals</span><br><span id="successRef" style="font-size:1.8rem; font-weight:700;">0</span></div>
+          <div><span class="text-muted">Pending</span><br><span id="pendingRef" style="font-size:1.8rem; font-weight:700;">0</span></div>
+          <div><span class="text-muted">Earned from Referrals</span><br><span id="refEarned" style="font-size:1.8rem; font-weight:700; color:var(--accent-3);">$0.00</span></div>
+        </div>
+        <p class="text-muted">Earn 5% of eligible rewards for 30 days.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div id="page-profile" class="page">
+    <div class="container" style="max-width:600px;">
+      <h2><i class="fas fa-user text-accent"></i> Profile</h2>
+      <div class="card">
+        <p><strong>Name:</strong> <span id="profileName">User</span></p>
+        <p><strong>Email:</strong> <span id="profileEmail">user@example.com</span></p>
+        <p><strong>Verified:</strong> <span id="profileVerified" style="color:var(--success);">Yes</span></p>
+        <button class="btn btn-outline"><i class="fas fa-key"></i> Change Password</button>
+        <button class="btn btn-danger" style="margin-left:1rem;"><i class="fas fa-trash"></i> Delete Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPORT -->
+  <div id="page-support" class="page">
+    <div class="container" style="max-width:600px;">
+      <h2><i class="fas fa-headset text-accent"></i> Support</h2>
+      <div class="card">
+        <p><i class="fab fa-telegram" style="color:var(--accent-2); font-size:1.4rem;"></i> <strong>Telegram:</strong> <a href="https://t.me/phantom_support" target="_blank">@phantom_support</a></p>
+        <p><i class="fas fa-envelope" style="color:var(--accent-1); font-size:1.4rem;"></i> <strong>Email:</strong> <a href="mailto:support@phantom.io">support@phantom.io</a></p>
+        <hr style="border-color:var(--border-subtle); margin:1.5rem 0;">
+        <form id="supportForm">
+          <label>Category</label>
+          <select>
+            <option>General</option>
+            <option>Withdrawal</option>
+            <option>Technical</option>
+          </select>
+          <label>Subject</label>
+          <input type="text" required>
+          <label>Description</label>
+          <textarea rows="4"></textarea>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Ticket</button>
+        </form>
+        <h4>Your Tickets</h4>
+        <div id="ticketList"><p class="text-muted">No tickets.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEGAL PAGES (abridged) -->
+  <div id="page-terms" class="page">
+    <div class="container legal-content">
+      <h1>Terms of Service</h1>
+      <p><strong>Last Updated:</strong> March 2026</p>
+      <p>By using PHANTOM, you agree to participate voluntarily. Rewards are not guaranteed. You must be 18+.</p>
+      <h2>1. Participation</h2>
+      <p>You contribute idle CPU resources. You may pause or stop at any time.</p>
+      <h2>2. Rewards</h2>
+      <p>Rewards are calculated server‑side and are subject to network conditions.</p>
+      <h2>3. Liability</h2>
+      <p>We are not liable for hardware damage or data loss.</p>
+      <p style="margin-top:2rem;">Contact us at <a href="mailto:support@phantom.io">support@phantom.io</a>.</p>
+    </div>
+  </div>
+  <div id="page-privacy" class="page">
+    <div class="container legal-content">
+      <h1>Privacy Policy</h1>
+      <p>We collect only session metadata (IP, device type). No biometrics, keystrokes, camera, or microphone.</p>
+      <p>We do not sell your personal data.</p>
+    </div>
+  </div>
+  <div id="page-rewards-policy" class="page">
+    <div class="container legal-content">
+      <h1>Rewards Policy</h1>
+      <p>Rewards are based on your contribution. Minimum withdrawal: $2.50 (≈₹200). Processed within 1‑7 business days.</p>
+    </div>
+  </div>
+  <div id="page-acceptable-use" class="page">
+    <div class="container legal-content">
+      <h1>Acceptable Use</h1>
+      <p>No bots, automation, or fraud. Violation may result in account suspension.</p>
+    </div>
+  </div>
+  <div id="page-risk-disclosure" class="page">
+    <div class="container legal-content">
+      <h1>Risk Disclosure</h1>
+      <p>Participation involves CPU usage and internet data consumption. You assume all risks.</p>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="page-admin" class="page">
+    <div class="container">
+      <h2><i class="fas fa-cogs text-accent"></i> Admin Dashboard</h2>
+      <div class="admin-stats" id="adminStats">
+        <div class="admin-stat"><span class="text-muted">Total Users</span><div class="value" id="adminTotalUsers">0</div></div>
+        <div class="admin-stat"><span class="text-muted">Active Sessions</span><div class="value" id="adminActiveSessions">0</div></div>
+        <div class="admin-stat"><span class="text-muted">Today's Rewards</span><div class="value" id="adminTodayRewards">$0</div></div>
+        <div class="admin-stat"><span class="text-muted">Pending Withdrawals</span><div class="value" id="adminPendingWithdrawals">0</div></div>
+      </div>
+      <div class="card">
+        <h3>System Controls</h3>
+        <div class="flex">
+          <button class="btn btn-outline" id="adminPauseParticipation"><i class="fas fa-pause-circle"></i> Pause Participation</button>
+          <button class="btn btn-outline" id="adminEnableRegistration"><i class="fas fa-user-plus"></i> Enable Registration</button>
+          <button class="btn btn-outline" id="adminPauseWithdrawals"><i class="fas fa-ban"></i> Pause Withdrawals</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>User Management</h3>
+        <input type="text" placeholder="Search user by email or ID" id="adminUserSearch" class="w-full">
+        <div id="adminUserResults" class="mt-1"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+</div>
+
+<script>
+  (function() {
+    'use strict';
+
+    // -------- BACKEND URL --------
+    const API_BASE = 'https://phantom-net.onrender.com';
+
+    // ---------- ROUTING ----------
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('[data-page]');
+    let currentPage = 'landing';
+    let isAuthenticated = false;
+    let isAdmin = false;
+
+    function showPage(pageId) {
+      pages.forEach(p => p.classList.remove('active'));
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.add('active');
+      currentPage = pageId;
+      navLinks.forEach(l => l.classList.toggle('active', l.dataset.page === pageId));
+      document.querySelectorAll('.bottom-nav a').forEach(l => l.classList.toggle('active', l.dataset.page === pageId));
+      const adminLink = document.getElementById('adminLink');
+      if (adminLink) adminLink.style.display = (isAdmin && isAuthenticated) ? 'flex' : 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = link.dataset.page;
+        if (!isAuthenticated && ['dashboard','rewards','wallet','referrals','profile','admin'].includes(page)) {
+          showToast('Please log in first.');
+          showPage('login');
+          return;
+        }
+        showPage(page);
+      });
+    });
+
+    document.getElementById('getStartedBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      showPage(isAuthenticated ? 'dashboard' : 'login');
+    });
+    document.getElementById('howItWorksBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('#page-landing .container').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('finalCtaBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      showPage(isAuthenticated ? 'dashboard' : 'login');
+    });
+
+    // ---------- HELPER: FETCH WITH API_BASE ----------
+    async function apiCall(endpoint, method, body) {
+      const options = {
+        method: method || 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      };
+      if (body) options.body = JSON.stringify(body);
+      try {
+        const response = await fetch(`${API_BASE}${endpoint}`, options);
+        const data = await response.json();
+        return { ok: response.ok, data };
+      } catch (error) {
+        console.error('API call error:', error);
+        return { ok: false, error: error.message };
+      }
+    }
+
+    // ---------- AUTH ----------
+    document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const result = await apiCall('/api/auth/login', 'POST', { email, password });
+      if (result.ok && result.data.success) {
+        isAuthenticated = true;
+        isAdmin = (email === 'admin@phantom.io');
+        localStorage.setItem('token', result.data.token);
+        localStorage.setItem('userId', result.data.user.id);
+        localStorage.setItem('userEmail', email);
+        // fetch profile
+        const profileRes = await fetch(`${API_BASE}/api/profile/${result.data.user.id}`);
+        const profile = await profileRes.json();
+        document.getElementById('profileName').textContent = profile.full_name || 'User';
+        document.getElementById('profileEmail').textContent = profile.email;
+        document.getElementById('userAvatar').textContent = (profile.full_name || 'U')[0].toUpperCase();
+        showToast('Logged in successfully.');
+        showPage('dashboard');
+        updateDashboard();
+        if (isAdmin) document.getElementById('adminLink').style.display = 'flex';
+        document.getElementById('refCode').textContent = profile.referral_code || 'REF' + Math.random().toString(36).substring(2,8).toUpperCase();
+        document.getElementById('refLink').textContent = 'https://phantom.io/ref/' + document.getElementById('refCode').textContent;
+      } else {
+        showToast('Login failed: ' + (result.data?.error || 'Network error'));
+      }
+    });
+
+    // Registration: auto-login after success
+    document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const full_name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      const password = document.getElementById('regPassword').value;
+      const confirm = document.getElementById('regConfirm').value;
+      if (password !== confirm) { showToast('Passwords do not match.'); return; }
+      // Register
+      const regResult = await apiCall('/api/auth/register', 'POST', { email, password, full_name });
+      if (!regResult.ok || !regResult.data.success) {
+        showToast('Registration failed: ' + (regResult.data?.error || 'Network error'));
+        return;
+      }
+      // Auto-login
+      const loginResult = await apiCall('/api/auth/login', 'POST', { email, password });
+      if (loginResult.ok && loginResult.data.success) {
+        isAuthenticated = true;
+        isAdmin = (email === 'admin@phantom.io');
+        localStorage.setItem('token', loginResult.data.token);
+        localStorage.setItem('userId', loginResult.data.user.id);
+        localStorage.setItem('userEmail', email);
+        // fetch profile
+        const profileRes = await fetch(`${API_BASE}/api/profile/${loginResult.data.user.id}`);
+        const profile = await profileRes.json();
+        document.getElementById('profileName').textContent = profile.full_name || 'User';
+        document.getElementById('profileEmail').textContent = profile.email;
+        document.getElementById('userAvatar').textContent = (profile.full_name || 'U')[0].toUpperCase();
+        showToast('Account created! You are now logged in.');
+        showPage('dashboard');
+        updateDashboard();
+        if (isAdmin) document.getElementById('adminLink').style.display = 'flex';
+        document.getElementById('refCode').textContent = profile.referral_code || 'REF' + Math.random().toString(36).substring(2,8).toUpperCase();
+        document.getElementById('refLink').textContent = 'https://phantom.io/ref/' + document.getElementById('refCode').textContent;
+      } else {
+        showToast('Account created, but auto-login failed. Please log in manually.');
+        showPage('login');
+      }
+    });
+
+    document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      isAuthenticated = false;
+      isAdmin = false;
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('userEmail');
+      showToast('Logged out.');
+      showPage('landing');
+    });
+
+    // ---------- CONSENT ----------
+    document.getElementById('consentAcceptBtn')?.addEventListener('click', () => {
+      if (document.getElementById('consentCheckbox').checked) {
+        showToast('Consent recorded. Welcome!');
+        showPage('dashboard');
+        updateDashboard();
+      } else {
+        showToast('Please check the consent box.');
+      }
+    });
+    document.getElementById('consentCancelBtn')?.addEventListener('click', () => {
+      showToast('Consent declined.');
+      showPage('landing');
+    });
+
+    // ---------- SESSION ENGINE ----------
+    let sessionActive = false;
+    let timerInterval = null;
+    let seconds = 0;
+    let earnedToday = 0;
+    let totalEarned = 0;
+    let worker = null;
+    let contributionInterval = null;
+
+    function updateDashboard() {
+      document.getElementById('todayReward').textContent = '$' + earnedToday.toFixed(2);
+      document.getElementById('totalReward').textContent = '$' + totalEarned.toFixed(2);
+      document.getElementById('estReward').textContent = '$' + (earnedToday + totalEarned).toFixed(2);
+      document.getElementById('rewardToday').textContent = '$' + earnedToday.toFixed(2);
+      document.getElementById('rewardLifetime').textContent = '$' + totalEarned.toFixed(2);
+      document.getElementById('availBalance').textContent = '$' + (totalEarned - 0.5).toFixed(2);
+    }
+
+    function startSession() {
+      if (sessionActive) return;
+      sessionActive = true;
+      document.getElementById('statusDot').className = 'status-dot status-active';
+      document.getElementById('statusText').textContent = 'Active';
+
+      // Start Web Worker
+      if (window.Worker) {
+        const workerCode = `
+          let running = true;
+          let count = 0;
+          function loop() {
+            const encoder = new TextEncoder();
+            let data = encoder.encode('phantom-' + Date.now() + '-' + Math.random());
+            while (running) {
+              try {
+                if (window.crypto && window.crypto.subtle) {
+                  crypto.subtle.digest('SHA-256', data).then(hashBuffer => {
+                    const arr = Array.from(new Uint8Array(hashBuffer));
+                    const hex = arr.map(b => b.toString(16).padStart(2,'0')).join('');
+                    data = encoder.encode(hex + '-' + Math.random());
+                    count++;
+                  }).catch(() => {});
+                } else {
+                  let x = 0;
+                  for (let i=0; i<10000; i++) x += Math.sin(i) * Math.cos(i);
+                  data = encoder.encode(x.toString() + '-' + Math.random());
+                  count++;
+                }
+              } catch(e) {
+                let x = 0;
+                for (let i=0; i<10000; i++) x += Math.sin(i) * Math.cos(i);
+                data = encoder.encode(x.toString() + '-' + Math.random());
+                count++;
+              }
+            }
+          }
+          loop();
+          setInterval(() => {
+            postMessage({ type: 'hashrate', hashes: count });
+            count = 0;
+          }, 1000);
+          self.onmessage = (e) => { if (e.data === 'stop') { running = false; self.close(); } };
+        `;
+        const blob = new Blob([workerCode], { type: 'application/javascript' });
+        const workerUrl = URL.createObjectURL(blob);
+        worker = new Worker(workerUrl);
+        worker.onmessage = (e) => {
+          if (e.data.type === 'hashrate') {
+            const hps = e.data.hashes;
+            const slider = document.getElementById('cpuSlider');
+            const limit = parseInt(slider.value);
+            const cpu = Math.min(limit, Math.round(hps / 50));
+            document.getElementById('cpuUsage').textContent = cpu + '%';
+            document.getElementById('contribRate').textContent = hps;
+            // Send contribution to backend every 10 seconds
+            if (!contributionInterval) {
+              contributionInterval = setInterval(async () => {
+                const userId = localStorage.getItem('userId');
+                if (userId && sessionActive) {
+                  await apiCall('/api/contribution', 'POST', { user_id: userId, hashes: hps * 10 });
+                }
+              }, 10000);
+            }
+            const reward = hps * 0.00001;
+            earnedToday += reward;
+            totalEarned += reward;
+            updateDashboard();
+          }
+        };
+      } else {
+        // fallback simulation
+      }
+
+      // Timer
+      seconds = 0;
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        seconds++;
+        const hrs = String(Math.floor(seconds/3600)).padStart(2,'0');
+        const mins = String(Math.floor((seconds%3600)/60)).padStart(2,'0');
+        const secs = String(seconds%60).padStart(2,'0');
+        document.getElementById('sessionTimer').textContent = hrs + ':' + mins + ':' + secs;
+        document.getElementById('streakCount').textContent = Math.floor(seconds/3600) + ' days';
+        document.getElementById('nextEvent').textContent = 'In ' + (60 - (seconds%60)) + 's';
+        if (!worker) {
+          const slider = document.getElementById('cpuSlider');
+          const limit = parseInt(slider.value);
+          const cpu = Math.min(limit, 10 + Math.random()*20);
+          document.getElementById('cpuUsage').textContent = Math.round(cpu) + '%';
+          const reward = 0.0002 * (cpu/100);
+          earnedToday += reward;
+          totalEarned += reward;
+          updateDashboard();
+        }
+      }, 1000);
+
+      showToast('Session started.');
+    }
+
+    function pauseSession() {
+      if (!sessionActive) return;
+      sessionActive = false;
+      document.getElementById('statusDot').className = 'status-dot status-paused';
+      document.getElementById('statusText').textContent = 'Paused';
+      if (worker) { worker.postMessage('stop'); worker = null; }
+      clearInterval(contributionInterval);
+      contributionInterval = null;
+      clearInterval(timerInterval);
+      timerInterval = null;
+      showToast('Session paused.');
+    }
+
+    function stopSession() {
+      sessionActive = false;
+      if (worker) { worker.postMessage('stop'); worker = null; }
+      clearInterval(contributionInterval);
+      contributionInterval = null;
+      clearInterval(timerInterval);
+      timerInterval = null;
+      document.getElementById('statusDot').className = 'status-dot status-offline';
+      document.getElementById('statusText').textContent = 'Offline';
+      document.getElementById('sessionTimer').textContent = '00:00:00';
+      document.getElementById('cpuUsage').textContent = '0%';
+      document.getElementById('contribRate').textContent = '0';
+      showToast('Session stopped.');
+    }
+
+    document.getElementById('startBtn').addEventListener('click', startSession);
+    document.getElementById('pauseBtn').addEventListener('click', pauseSession);
+    document.getElementById('stopBtn').addEventListener('click', stopSession);
+
+    document.getElementById('cpuSlider').addEventListener('input', function() {
+      document.getElementById('cpuLimitLabel').textContent = this.value + '%';
+    });
+
+    // ---------- WITHDRAWAL ----------
+    document.getElementById('withdrawBtn')?.addEventListener('click', async () => {
+      const method = document.getElementById('withdrawMethod').value;
+      const address = document.getElementById('withdrawAddress').value;
+      const amount = parseFloat(document.getElementById('withdrawAmount').value);
+      if (!address || !amount || amount < 2.5) {
+        showToast('Please fill all fields and amount ≥ $2.50.');
+        return;
+      }
+      const userId = localStorage.getItem('userId');
+      if (!userId) { showToast('Please log in.'); return; }
+      const result = await apiCall('/api/withdrawals', 'POST', { user_id: userId, amount_usd: amount, method, address });
+      if (result.ok && result.data.success) {
+        showToast('Withdrawal request submitted.');
+        const history = document.getElementById('withdrawHistory');
+        history.innerHTML = '<p><i class="fas fa-clock text-muted"></i> Pending: $' + amount.toFixed(2) + ' via ' + method + ' to ' + address.slice(0,10) + '...</p>' + history.innerHTML;
+      } else {
+        showToast('Error: ' + (result.data?.error || 'Network error'));
+      }
+    });
+
+    // ---------- SUPPORT ----------
+    document.getElementById('supportForm')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const userId = localStorage.getItem('userId');
+      const subject = document.querySelector('#supportForm input[type="text"]').value;
+      const description = document.querySelector('#supportForm textarea').value;
+      const category = document.querySelector('#supportForm select').value;
+      if (userId) {
+        await apiCall('/api/support', 'POST', { user_id: userId, subject, description, category });
+      }
+      showToast('Ticket submitted. We\'ll respond soon.');
+      const list = document.getElementById('ticketList');
+      list.innerHTML = '<div class="ticket-status open"><i class="fas fa-exclamation-circle"></i> OPEN: ' + subject + '</div>' + list.innerHTML;
+    });
+
+    // ---------- ADMIN MOCK ----------
+    document.getElementById('adminPauseParticipation')?.addEventListener('click', () => showToast('Participation paused (mock).'));
+    document.getElementById('adminEnableRegistration')?.addEventListener('click', () => showToast('Registration enabled (mock).'));
+    document.getElementById('adminPauseWithdrawals')?.addEventListener('click', () => showToast('Withdrawals paused (mock).'));
+
+    document.getElementById('adminUserSearch')?.addEventListener('input', function() {
+      const results = document.getElementById('adminUserResults');
+      if (this.value.length > 2) {
+        results.innerHTML = '<p><i class="fas fa-user"></i> test@example.com (ID: 123) <button class="btn btn-outline btn-sm" onclick="showToast(\'Viewing user\')">View</button></p>';
+      } else {
+        results.innerHTML = '';
+      }
+    });
+
+    function updateAdminStats() {
+      document.getElementById('adminTotalUsers').textContent = Math.floor(Math.random() * 100) + 50;
+      document.getElementById('adminActiveSessions').textContent = Math.floor(Math.random() * 20) + 5;
+      document.getElementById('adminTodayRewards').textContent = '$' + (Math.random() * 100 + 20).toFixed(0);
+      document.getElementById('adminPendingWithdrawals').textContent = Math.floor(Math.random() * 10);
+    }
+
+    // ---------- NOTIFICATIONS ----------
+    document.getElementById('notificationBell')?.addEventListener('click', () => {
+      showToast('You have no new notifications.');
+    });
+
+    // ---------- TOAST ----------
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      clearTimeout(toast._hideTimeout);
+      toast._hideTimeout = setTimeout(() => { toast.style.display = 'none'; }, 3500);
+    }
+    window.showToast = showToast;
+
+    // ---------- INIT ----------
+    if (localStorage.getItem('token')) {
+      isAuthenticated = true;
+      const email = localStorage.getItem('userEmail') || 'user@example.com';
+      document.getElementById('profileEmail').textContent = email;
+      document.getElementById('userAvatar').textContent = (email[0] || 'U').toUpperCase();
+      if (email === 'admin@phantom.io') { isAdmin = true; document.getElementById('adminLink').style.display = 'flex'; }
+      showPage('dashboard');
+      updateDashboard();
+    } else {
+      showPage('landing');
+    }
+
+    // Override showPage for admin stats
+    const origShowPage = showPage;
+    showPage = function(pageId) {
+      origShowPage(pageId);
+      if (pageId === 'admin' && isAdmin) updateAdminStats();
+    };
+    // Re-bind nav clicks with new showPage
+    document.querySelectorAll('[data-page]').forEach(link => {
+      link.removeEventListener('click', null);
+    });
+    document.querySelectorAll('[data-page]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const page = this.dataset.page;
+        if (!isAuthenticated && ['dashboard','rewards','wallet','referrals','profile','admin'].includes(page)) {
+          showToast('Please log in first.');
+          showPage('login');
+          return;
+        }
+        showPage(page);
+      });
+    });
+    document.getElementById('getStartedBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      showPage(isAuthenticated ? 'dashboard' : 'login');
+    });
+    document.getElementById('finalCtaBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      showPage(isAuthenticated ? 'dashboard' : 'login');
+    });
+    window.updateAdminStats = updateAdminStats;
+  })();
+</script>
+
+</body>
+</html>

@@ -877,7 +877,7 @@
         localStorage.setItem('userId', result.user.id);
         localStorage.setItem('userEmail', email);
         // Fetch profile
-        const profile = await fetch(`https://your-backend.onrender.com/api/profile/${result.user.id}`);
+        const profile = await fetch(`https://phantom.net.onrender.com/api/profile/${result.user.id}`);
         const data = await profile.json();
         document.getElementById('profileName').textContent = data.full_name || 'User';
         document.getElementById('profileEmail').textContent = data.email;
